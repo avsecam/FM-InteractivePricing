@@ -1,0 +1,31 @@
+@import url("https://fonts.googleapis.com/css2?family=Fraunces:wght@700;900&family=Manrope:wght@600;800&display=swap");
+html, button {
+  font-size: 15px;
+  font-family: "Manrope", sans-serif;
+  font-weight: 600;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin: 0;
+  background-color: #fafbff;
+  background-image: url(./images/bg-pattern.svg);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.headerText > h1 {
+  color: #293356;
+}
+.headerText > h2 {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #858fad;
+}
+
+/*# sourceMappingURL=style.css.map */

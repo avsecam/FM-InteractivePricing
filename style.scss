@@ -1,0 +1,51 @@
+// FONTS
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:wght@700;900&family=Manrope:wght@600;800&display=swap');
+
+$fontMain: "Manrope", sans-serif;
+$fwMedium: 600;
+$fwBold: 800;
+
+// COLORS
+$cyan200: hsl(174, 77%, 80%);
+$cyan400: hsl(174, 86%, 45%);
+$red100: hsl(14, 92%, 95%);
+$red400: hsl(15, 100%, 70%);
+$blue100: hsl(226, 100%, 87%);
+
+$white: hsl(0, 0%, 100%);
+$gray100: hsl(230, 100%, 99%);
+$gray200: hsl(224, 65%, 95%);
+$gray300: hsl(223, 50%, 87%);
+$gray400: hsl(225, 20%, 60%);
+$gray700: hsl(227, 35%, 25%);
+
+html, button {
+	font-size: 15px;
+	font-family: $fontMain;
+	font-weight: $fwMedium;
+}
+
+body {
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+	margin: 0;
+	background-color: $gray100;
+	background-image: url(./images/bg-pattern.svg);
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+
+.headerText {
+	> h1 {
+		color: $gray700;
+	}
+	> h2 {
+		font-size: 1rem;
+		font-weight: $fwMedium;
+		color: $gray400;
+	}
+}
