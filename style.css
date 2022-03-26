@@ -16,7 +16,7 @@ body {
   background-color: #fafbff;
   background-image: url(./images/bg-pattern.svg);
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size: 100vw 50vh;
 }
 
 .headerText > h1 {

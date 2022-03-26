@@ -54,5 +54,38 @@
     </div>
   </main>
 
+  <script defer>
+    const pageviewPricing = {
+      1: ["10K", 8],
+      2: ["50K", 12],
+      3: ["100K", 16],
+      4: ["500K", 24],
+      5: ["1M", 36]
+    }
+    const discountPercent = 0.25
+    const pageviewDisplay = document.querySelector(".display > h3")
+    const monthlyPriceDisplay = document.querySelector(".monthlyPrice > span")
+    const pageviewRange = document.querySelector("input[type=range]")
+    const billingTypeToggle = document.querySelector("input[type=checkbox]")
+
+    billingTypeToggle.addEventListener("click", () => {
+      let chosenPrice = pageviewPricing[pageviewRange.value][1]
+      if (billingTypeToggle.checked) {
+        monthlyPriceDisplay.innerText = `$${chosenPrice - chosenPrice * 0.25}.00`
+      } else {
+        monthlyPriceDisplay.innerText = `$${chosenPrice}.00`
+      }
+    })
+
+    pageviewRange.addEventListener("change", () => {
+      let pageviews = pageviewPricing[pageviewRange.value][0]
+      let monthlyPrice = pageviewPricing[pageviewRange.value][1]
+      pageviewDisplay.innerText = `${pageviews} Pageviews`
+      monthlyPriceDisplay.innerText =
+      (billingTypeToggle.checked)
+      ? `$${monthlyPrice - monthlyPrice * 0.25}.00`
+      : `$${monthlyPrice}.00`
+    })
+  </script>
 </body>
 </html>
