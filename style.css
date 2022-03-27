@@ -12,13 +12,20 @@ body {
   align-items: center;
   justify-content: center;
   text-align: center;
-  margin: 0;
+  margin: 2rem 0;
+  margin-bottom: 5rem;
   background-color: #fafbff;
   background-image: url(./images/bg-pattern.svg);
   background-repeat: no-repeat;
   background-size: 100vw 50vh;
 }
 
+.headerText {
+  background-image: url(./images/pattern-circles.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  padding-block: 2.5rem;
+}
 .headerText > h1 {
   color: #293356;
 }
@@ -26,6 +33,257 @@ body {
   font-size: 1rem;
   font-weight: 600;
   color: #858fad;
+}
+
+.pricingDiv {
+  background-color: white;
+  padding: 2rem 0;
+  margin-top: 2rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 1rem 3rem -1rem rgba(0, 0, 0, 0.1);
+}
+
+.top,
+.bottom {
+  padding-inline: 2rem;
+}
+
+.top {
+  padding-bottom: 1rem;
+}
+
+.display {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  color: #858fad;
+}
+.display > h3 {
+  text-transform: uppercase;
+  font-size: 1rem;
+  letter-spacing: 0.1em;
+}
+.display > .monthlyPrice {
+  position: relative;
+  display: flex;
+  align-items: center;
+  top: 5em;
+}
+.display > .monthlyPrice > span {
+  padding-right: 0.25em;
+  font-size: 2rem;
+  font-weight: 800;
+  color: #293356;
+}
+
+.rangeDiv {
+  position: relative;
+  margin-inline: 1rem;
+}
+.rangeDiv > input[type=range] {
+  position: relative;
+  top: -3vh;
+  left: -3px;
+  width: 100%;
+  height: 0.5rem;
+  margin-bottom: 3rem;
+  opacity: 0;
+  cursor: pointer;
+}
+.rangeDiv > input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  border: 1.5rem solid transparent;
+  cursor: pointer;
+}
+.rangeDiv .track {
+  position: absolute;
+  top: -1em;
+  width: 100%;
+  height: 0.5rem;
+  border-radius: 999rem;
+  background-color: #eaeefb;
+  pointer-events: none;
+  overflow: hidden;
+}
+.rangeDiv .trackFill {
+  width: 0;
+  height: 100%;
+  background: #a5f3eb;
+  transition: width 0.1s;
+}
+.rangeDiv .thumb {
+  position: absolute;
+  top: -2em;
+  left: 0;
+  background-image: url(./images/icon-slider.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: #10d5c2;
+  box-shadow: 0 1rem 2rem -0.4rem #10d5c2;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  pointer-events: none;
+  transition: left 0.1s;
+}
+
+.billingDiv {
+  margin: 2rem 2.5rem;
+  margin-top: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.9rem;
+}
+
+.checkboxDiv {
+  position: relative;
+  background-color: #cdd7ee;
+  border-radius: 999rem;
+  transition: background-color 0.2s;
+}
+.checkboxDiv > h4 {
+  position: absolute;
+  top: -50%;
+  color: #858fad;
+  font-weight: 600;
+  white-space: nowrap;
+}
+.checkboxDiv > h4:first-of-type {
+  left: -200%;
+}
+.checkboxDiv > h4:last-of-type {
+  left: 140%;
+}
+.checkboxDiv span {
+  position: absolute;
+  top: -10%;
+  left: 110%;
+  padding: 0.25em 0.75em;
+  border-radius: 999rem;
+  font-size: 0.8rem;
+  white-space: nowrap;
+  background-color: #feece7;
+  color: #ff8c66;
+}
+.checkboxDiv input {
+  opacity: 0;
+  width: 3.5rem;
+  height: 1.5rem;
+  cursor: pointer;
+}
+.checkboxDiv .checkboxKnob {
+  position: absolute;
+  top: 15%;
+  left: 10%;
+  width: 1.3rem;
+  height: 1.3rem;
+  border-radius: 50%;
+  background-color: white;
+  pointer-events: none;
+  transition: left 0.1s;
+}
+.checkboxDiv input:checked + .checkboxKnob {
+  left: 57.5%;
+}
+
+.bottom {
+  border-top: 1px solid #eaeefb;
+  padding-top: 1rem;
+}
+.bottom > ul {
+  list-style-type: none;
+  padding: 0;
+}
+.bottom > ul > li {
+  position: relative;
+  margin: 0.75em 0;
+  color: #858fad;
+}
+.bottom > ul > li::before {
+  content: "";
+  position: absolute;
+  top: 0.3em;
+  transform: translateX(-2.5em);
+  width: 0.8rem;
+  height: 0.8rem;
+  background-image: url(./images/icon-check.svg);
+  background-size: cover;
+}
+
+button {
+  margin-top: 1.5rem;
+  padding: 0.75em 3em;
+  border: none;
+  border-radius: 999rem;
+  background-color: #293356;
+  color: #cdd7ee;
+  cursor: pointer;
+  transition: background-color 0.2s, transform 0.1s;
+}
+button:hover {
+  background-color: #10d5c2;
+  color: #293356;
+}
+button:active {
+  transform: scale(0.95);
+  transition: transform 0s;
+}
+
+@media screen and (min-aspect-ratio: 12/16) {
+  body {
+    margin-block: 0;
+  }
+
+  .headerText {
+    margin-top: 0;
+  }
+
+  .pricingDiv {
+    width: 40rem;
+  }
+
+  .top,
+.bottom {
+    padding-inline: 3.5rem;
+  }
+
+  .display {
+    flex-direction: row;
+  }
+  .display > .monthlyPrice {
+    top: initial;
+  }
+
+  .rangeDiv {
+    margin-top: 2rem;
+  }
+  .rangeDiv > input[type=range] {
+    top: 0;
+    margin-bottom: initial;
+  }
+  .rangeDiv .track {
+    top: 0;
+  }
+  .rangeDiv .thumb {
+    top: -1em;
+  }
+
+  .bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    text-align: left;
+  }
+  .bottom > ul {
+    padding-left: 3rem;
+  }
+
+  button {
+    margin-top: 0;
+  }
 }
 
 /*# sourceMappingURL=style.css.map */

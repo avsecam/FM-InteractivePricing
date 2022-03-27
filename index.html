@@ -30,12 +30,21 @@
           </div>
         </div>
 
-        <input type="range" name="pricing" min="1" max="5">
+        <div class="rangeDiv">
+          <input type="range" name="pricing" min="0" max="4">
+          <div class="track">
+            <div class="trackFill"></div>
+          </div>
+          <div class="thumb"></div>
+        </div>
 
         <div class="billingDiv">
-          <h4>Monthly Billing</h4>
-          <input type="checkbox" name="billingType">
-          <h4>Yearly Billing<span>25% Discount</span></h4>
+          <div class="checkboxDiv">
+            <h4>Monthly Billing</h4>
+            <input type="checkbox" name="billingType">
+            <div class="checkboxKnob"></div>
+            <h4>Yearly Billing<span>25% Discount</span></h4>
+          </div>
         </div>
 
       </div>
@@ -54,38 +63,71 @@
     </div>
   </main>
 
-  <script defer>
+  <script>
     const pageviewPricing = {
-      1: ["10K", 8],
-      2: ["50K", 12],
-      3: ["100K", 16],
-      4: ["500K", 24],
-      5: ["1M", 36]
+      0: ["10K", 8],
+      1: ["50K", 12],
+      2: ["100K", 16],
+      3: ["500K", 24],
+      4: ["1M", 36]
     }
     const discountPercent = 0.25
     const pageviewDisplay = document.querySelector(".display > h3")
     const monthlyPriceDisplay = document.querySelector(".monthlyPrice > span")
     const pageviewRange = document.querySelector("input[type=range]")
     const billingTypeToggle = document.querySelector("input[type=checkbox]")
+    
+    const customCheckbox = document.querySelector(".checkboxDiv")
+    const gray300 = "hsl(223, 50%, 87%)"
+    const cyan400 = "hsl(174, 86%, 45%)"
+
+    // SLIDER
+    const sliderTrack = document.querySelector(".rangeDiv .trackFill")
+    const sliderThumb = document.querySelector(".rangeDiv .thumb")
+
+    function updateSlider(value) {
+      sliderThumb.style.left = `${value * 25}%`
+      sliderThumb.style.transform = `translateX(-${50}%)`
+      sliderTrack.style.width = `${value * 25}%`
+    }
+    // set to middle
+    updateSlider(2)
 
     billingTypeToggle.addEventListener("click", () => {
       let chosenPrice = pageviewPricing[pageviewRange.value][1]
+
+      // set price display AND toggle color
       if (billingTypeToggle.checked) {
         monthlyPriceDisplay.innerText = `$${chosenPrice - chosenPrice * 0.25}.00`
+        customCheckbox.style.backgroundColor = cyan400
       } else {
         monthlyPriceDisplay.innerText = `$${chosenPrice}.00`
+        customCheckbox.style.backgroundColor = gray300
       }
     })
 
-    pageviewRange.addEventListener("change", () => {
+    pageviewRange.addEventListener("input", (e) => {
       let pageviews = pageviewPricing[pageviewRange.value][0]
       let monthlyPrice = pageviewPricing[pageviewRange.value][1]
+      updateSlider(e.target.value)
       pageviewDisplay.innerText = `${pageviews} Pageviews`
       monthlyPriceDisplay.innerText =
       (billingTypeToggle.checked)
       ? `$${monthlyPrice - monthlyPrice * 0.25}.00`
       : `$${monthlyPrice}.00`
     })
+
+    function showFullDiscountText() {
+      const discountText = document.querySelector(".billingDiv span")
+      discountText.innerText = (window.innerWidth / window.innerHeight >= 12 / 16) ? "25% Discount" : "-25%"
+    }
+    showFullDiscountText()
+    window.addEventListener("resize", () => {
+      showFullDiscountText()
+    })
+
+
+
   </script>
 </body>
 </html>
